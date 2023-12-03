@@ -26,7 +26,7 @@ class BinarySearchTree<T extends Comparable<T>> {
      *
      * @param node The current node to be added
      * @param key The key added to the tree.
-     * @return Newly added node
+     * @return root
      */
     private INode<T> addNodeRecursive(INode<T> node, T key) {
         if (node == null) {
@@ -36,11 +36,34 @@ class BinarySearchTree<T extends Comparable<T>> {
         // Compare the key and decide whether to go left or right
         if (key.compareTo(node.getKey()) < 0) {
             node.setLeft(addNodeRecursive(node.getLeft(), key));
-        } else if (key.compareTo(node.getKey()) > 0) {
+        }
+        else if (key.compareTo(node.getKey()) > 0) {
             node.setRight(addNodeRecursive(node.getRight(), key));
         }
 
         return node;
+    }
+
+    /**
+     * @desc calculated size of binary tree
+     * @param node root node
+     * @return size of binary search tree
+     */
+    private int size(INode<T> node)
+    {
+        if(node==null)
+            return 0;
+
+        return 1+size(node.getLeft())+size(node.getRight());
+    }
+
+    /**
+     * @desc Gets the size of the binary search tree.
+     * @return The size of the binary search tree.
+     */
+    public int size()
+    {
+        return size(root);
     }
 
 
