@@ -85,4 +85,35 @@ class BinarySearchTree<T extends Comparable<T>> {
     public void inorderTraversal() {
         inorderTraversal(root);
     }
+
+    /**
+     * @desc Search for an element
+     * @param node current node during traversal
+     * @param key key to be searched
+     * @return True - element found, False- element not found
+     */
+    private boolean searchTree(INode<T>node,T key)
+    {
+        if(node == null)
+            return false;
+
+        else if(key.compareTo(node.getKey()) == 0)
+            return true;
+
+        else if(key.compareTo(node.getKey()) > 0)
+            return searchTree(node.getRight(),key);
+        
+        else
+            return searchTree(node.getLeft(),key);
+    }
+
+    /**
+     * @desc Search for an element
+     * @param searchKey key to be searched
+     * @return True - element found, False- element not found
+     */
+    public boolean searchTree(T searchKey)
+    {
+        return searchTree(root,searchKey);
+    }
 }

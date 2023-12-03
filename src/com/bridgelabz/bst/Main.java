@@ -31,5 +31,14 @@ public class Main {
             System.out.println("\nNot all elements are added to the binary search tree.");
         }
 
+        //search element 63
+        int searchElement = 63;
+        if(bst.searchTree(searchElement))
+        {
+            System.out.println(searchElement+" found");
+        }
+        else
+            System.out.println(searchElement+" not found");
+
     }
 }
